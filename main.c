@@ -1,138 +1,28 @@
-#include <mlx.h> //init
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#define StructureNotifyMask (1L << 17)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/07 12:52:51 by sendo             #+#    #+#             */
+/*   Updated: 2023/09/08 14:38:33 by sendo            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct sys_data_t
-{
-	int		x;
-	int		y;
-	void	*mlx_add;
-	void	*mlx_window_add;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			data_t;
+#include "fractol.h"
 
-typedef struct complex_t
-{
-	double size;  // 描く領域の一辺の長さ
-	double pixel; // 描く領域の一辺のピクセル数
-	double	real;
-	double	imag;
-}			math_compl_t;
-
-int	key_hook(int key, data_t *data)
+int	key_hook(int key, t_data *data)
 {
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx_add, data->mlx_window_add);
 		exit(0);
 	}
-	else
-		printf("aiueo");
 	return (0);
 }
 
-void		my_mlx_pixel_put(data_t *data, int x, int y, int color);
-
-void julia(data_t *data,int x, int y)
-{
-	math_compl_t complex;
-	double	real_tmp;
-	double	imag_tmp;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while(i < 1000)
-	{
-		while(j < 1000)
-		{
-			real_tmp = complex.real * complex.real - complex.imag
-				* complex.imag + x;
-			imag_tmp = 2 * complex.real * complex.imag + y;
-			complex.real = real_tmp;
-			complex.imag = imag_tmp;
-			if (complex.real * complex.real + complex.imag
-				* complex.imag > 4)
-			{
-				my_mlx_pixel_put(data, complex.real, complex.imag, 0xE0FFFF);
-				break ;
-			}
-		j++;
-		}
-	i++;
-	}
-}
-
-
-
-void	calculate(data_t *data, double x, double y)
-{
-	math_compl_t	complex;
-	double			real_tmp;
-	double			imag_tmp;
-	int				i;
-	int				j;
-	int				k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	complex.pixel = 1000;
-	complex.size = 4;
-	while (i < complex.pixel)
-	{
-		x = i * (complex.size / complex.pixel) - (complex.size / 2);
-		j = 0;
-		while (j < complex.pixel)
-		{
-			complex.real = 0;
-			complex.imag = 0;
-			y = j * (complex.size / complex.pixel) - (complex.size / 2);
-			k = 0;
-			while (k < 100)
-			{
-				real_tmp = complex.real * complex.real - complex.imag
-					* complex.imag + x;
-				imag_tmp = 2 * complex.real * complex.imag + y;
-				complex.real = real_tmp;
-				complex.imag = imag_tmp;
-				if (complex.real * complex.real + complex.imag
-					* complex.imag > 4)
-				{
-					my_mlx_pixel_put(data, i, j, 0xE0FFFF);
-					break ;
-				}
-				k++;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-// int			ft_mouse_hook(int button,int x,int y,void *param)
-// {
-// 	if(button == 4)
-
-// 	else if(button == 5)
-
-// 	return (0);
-// }
-
-int	ft_destroy_window(data_t *data)
-{
-	mlx_destroy_window(data->mlx_add, data->mlx_window_add);
-	exit(0);
-}
-
-void	my_mlx_pixel_put(data_t *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -140,26 +30,41 @@ void	my_mlx_pixel_put(data_t *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-
-
-int	main(void)
+void	print_error(void)
 {
-	data_t	data;
-	void	*mlx;
-	void	*mlx_window;
+	ft_printf("error!");
+	ft_printf("args must be under ±2.0");
+	ft_printf("if you want to see julia, three args are needed");
+	ft_printf("if you want to see mandelbrot, second arg is 42");
+}
 
-	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 1000, 1000, "smash");
-	data.img = mlx_new_image(mlx, 1000, 1000);
-	data.mlx_add = mlx;
-	data.mlx_window_add = mlx_window;
-	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
-			&data.line_length, &data.endian);
-	calculate(&data, 0, 0);
-	mlx_put_image_to_window(mlx, mlx_window, data.img, 0, 0);
-	mlx_key_hook(mlx_window, key_hook, &data);
-	// mlx_mouse_hook(mlx_window, ft_mouse_hook, &data);
-	mlx_hook(mlx_window, 17, StructureNotifyMask, ft_destroy_window, &data);
-	mlx_loop(mlx);
-	printf("完成");
+int	ft_destroy_window(t_data *data)
+{
+	mlx_destroy_window(data->mlx_add, data->mlx_window_add);
+	exit(0);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_data	data;
+
+	data.size = 4;
+	if (argc == 1)
+	{
+		print_error();
+		return (0);
+	}
+	else if (argc == 2 && ft_advanced_atod(argv[1]) == 42)
+		ft_deal_mandelbrot(&data);
+	else if (argc == 3)
+	{
+		data.x = ft_advanced_atod(argv[1]);
+		data.y = ft_advanced_atod(argv[2]);
+		if (ft_err_flag(&data) == 1)
+			return (1);
+		ft_deal_julia(&data);
+	}
+	else
+		print_error();
+	return (0);
 }

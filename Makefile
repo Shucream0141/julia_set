@@ -1,36 +1,52 @@
 CC     = gcc
-CFLAGS = -Wall -Wextra -Werror
-LFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
-SRC =  main.c
+CFLAGS = -Wall -Wextra -Werror -O2
+LFLAGS = -lmlx -lm -framework OpenGL -framework AppKit -g -fsanitize=address
+SRC =  main.c \
+	ft_atod.c \
+	ft_julia.c \
+	ft_mandelbrot.c \
+	ft_deal_arg.c
+	
 OBJ = $(SRC:.c=.o)
 DIR = minilibx_opengl_20191021
 RM = rm -f
 AR = ar -rc
-NAME = fractol.a
-LIB = minilibx_opengl_20191021/libmlx.a
-EXE = exe
+LIB4 = fractol.a
+LIB1 = minilibx_opengl_20191021/libmlx.a
+LIB2 = printf/libftprintf.a
+LIB3 = libft/libft.a
+EXE = fractol
 
 
-all: $(NAME) $(EXE)
+all: $(LIB4) $(EXE)
 
-$(EXE): $(NAME) 
-	$(CC) $(CFLAGS) $(LFLAGS) $(SRC) $< -o $@
+$(EXE): $(LIB1) $(LIB2) $(LIB3) $(LIB4)
+	$(CC) $(CFLAGS) $(LFLAGS) $(SRC) $(LIB1) $(LIB2) $(LIB3) $(LIB4) -o $@
 
-$(NAME): $(LIB) $(OBJ)
-	$(AR) $(NAME) $(LIB) $(OBJ) 
+$(LIB4): $(OBJ)
+	$(AR) $(LIB4) $(OBJ)
 
-$(LIB):
+$(LIB1):
 	make -C $(DIR)
+$(LIB2):
+	make -C printf
+$(LIB3):
+	make -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make -C $(DIR) clean
+	make -C minilibx_opengl_20191021 clean
+	make -C libft clean
+	make -C printf clean
 	$(RM) $(OBJ) 
 
 fclean: clean
-	$(RM) $(NAME) $(EXE)
+	$(RM) $(LIB4) $(EXE)
+	make -C minilibx_opengl_20191021 clean
+	make -C libft fclean
+	make -C printf fclean
 
 re: fclean all
 
