@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_deal_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 19:14:11 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/08 14:39:50 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:57:37 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_mouse_hook_julia(int button, int x, int y, t_data *data)
 {
-	x = 1;
-	y = 1;
+	x = x + 1;
+	y = y + 1;
+	
 	if (button == 5)
 	{
 		mlx_destroy_image(data->mlx_add, data->img);
@@ -43,8 +44,9 @@ int	ft_mouse_hook_julia(int button, int x, int y, t_data *data)
 
 int	ft_mouse_hook_mandelbrot(int button, int x, int y, t_data *data)
 {
-	x = 1;
-	y = 1;
+	x = x + 1;
+	y = y + 1;
+
 	if (button == 5)
 	{
 		mlx_destroy_image(data->mlx_add, data->img);

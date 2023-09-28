@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:35:24 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/07 18:00:01 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:53:43 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ double	ft_advanced_atod(char *str)
 {
 	int		count;
 	double	num;
-	int		i;
 
 	count = 0;
-	i = 1;
 	while ((*str > 8 && *str < 14) || *str == 32)
 		str++;
 	while (*str == '+' || *str == '-')

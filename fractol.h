@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:53:09 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/08 14:38:52 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:53:05 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "printf/ft_printf.h"
 # include <math.h>
-# include <mlx.h>
+# include "./minilibx_opengl_20191021/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

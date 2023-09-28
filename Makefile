@@ -1,6 +1,6 @@
 CC     = gcc
 CFLAGS = -Wall -Wextra -Werror -O2
-LFLAGS = -lmlx -lm -framework OpenGL -framework AppKit -g -fsanitize=address
+LFLAGS = -lm -framework OpenGL -framework AppKit -g -fsanitize=address
 SRC =  main.c \
 	ft_atod.c \
 	ft_julia.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_julia.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:19 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/07 20:45:04 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/28 18:54:30 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,15 @@ void	calculate_julia(t_data *data)
 	t_math_compl	co;
 	int				i;
 	int				j;
-	int				k;
 
 	i = 0;
 	j = 0;
-	k = 0;
 	co.pixel = 1000;
 	while (i < co.pixel)
 	{
 		j = 0;
 		while (j < co.pixel)
 		{
-			k = 0;
 			co.real = i * (data->size / co.pixel) - (data->size / 2);
 			co.imag = -(j * (data->size / co.pixel) - (data->size / 2));
 			calculate_splitj(data, &co, i, j);
