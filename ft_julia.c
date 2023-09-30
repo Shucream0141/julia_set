@@ -6,7 +6,7 @@
 /*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:19 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/30 22:25:30 by shucream         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:31:30 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,17 @@ void	calculate_julia(t_data *data)
 		i++;
 	}
 }
+
+/*
+x = co.real
+y = co.imag
+
+- (data->size/2) means (x - a)
+window i = (data->size / 2)   -> math     x = 0      {x - (data->size / 2)}
+window j = (data->size / 2)   -> math     y = 0      {y - (data->size / 2)}
+
+
+i,j           -> pixel's 
+1000          -> window's size
+data->size    -> magnification
+*/

@@ -6,7 +6,7 @@
 /*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:52:51 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/30 22:17:13 by shucream         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:33:03 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,8 @@ int	main(int argc, char *argv[])
 		print_error();
 	return (0);
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q a.out");
+// }
