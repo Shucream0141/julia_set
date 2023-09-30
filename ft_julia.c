@@ -6,7 +6,7 @@
 /*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:19 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/28 18:54:30 by shucream         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:25:30 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	calculate_splitj(t_data *data, t_math_compl *co, int i, int j)
 		co->imag = co->im_tmp;
 		if (co->real * co->real + co->imag * co->imag > 4)
 		{
-			my_mlx_pixel_put(data, i, j, k * k * k * k);
+			my_mlx_pixel_put(data, i, j, k * k * k);
 			break ;
 		}
 		k++;
@@ -39,15 +39,13 @@ void	calculate_julia(t_data *data)
 	int				j;
 
 	i = 0;
-	j = 0;
-	co.pixel = 1000;
-	while (i < co.pixel)
+	while (i < 1000)
 	{
 		j = 0;
-		while (j < co.pixel)
+		while (j < 1000)
 		{
-			co.real = i * (data->size / co.pixel) - (data->size / 2);
-			co.imag = -(j * (data->size / co.pixel) - (data->size / 2));
+			co.real = i * (data->size / 1000) - (data->size / 2);
+			co.imag = -(j * (data->size / 1000) - (data->size / 2));
 			calculate_splitj(data, &co, i, j);
 			j++;
 		}

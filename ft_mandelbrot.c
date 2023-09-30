@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mandelbrot.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:29:21 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/08 14:39:11 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/30 21:56:30 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,32 @@ void	calculate_mandelbrot(t_data *data)
 	int				j;
 
 	i = 0;
-	j = 0;
-	co.pixel = 1000;
-	while (i < co.pixel)
+	while (i < 1000)
 	{
-		data->x = i * (data->size / co.pixel) - (data->size / 2);
+		data->x = i * (data->size / 1000) - (data->size / 2);
 		j = 0;
-		while (j < co.pixel)
+		while (j < 1000)
 		{
 			co.real = 0;
 			co.imag = 0;
-			data->y = j * (data->size / co.pixel) - (data->size / 2);
+			data->y = j * (data->size / 1000) - (data->size / 2);
 			calculate_splitm(data, &co, i, j);
 			j++;
 		}
 		i++;
 	}
 }
+
+/*
+x = co.real
+y = co.imag
+
+- (data->size/2) means (x - a)
+window i = (data->size / 2)   -> math     x = 0      {x - (data->size / 2)}
+window j = (data->size / 2)   -> math     y = 0      {y - (data->size / 2)}
+
+
+i,j           -> pixel's 
+1000          -> window's size
+data->size    -> magnification
+*/

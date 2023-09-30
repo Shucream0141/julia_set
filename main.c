@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sendo <sendo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:52:51 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/08 14:38:33 by sendo            ###   ########.fr       */
+/*   Updated: 2023/09/30 22:17:13 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	print_error(void)
 {
-	ft_printf("error!");
-	ft_printf("args must be under ±2.0");
-	ft_printf("if you want to see julia, three args are needed");
-	ft_printf("if you want to see mandelbrot, second arg is 42");
+	ft_printf("error!\n");
+	ft_printf("if you want to see julia, three args are needed\n");
+	ft_printf(",args must be under ±2.0\n");
+	ft_printf("if you want to see mandelbrot, second arg is 42\n");
 }
 
 int	ft_destroy_window(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: shucream <shucream@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:53:09 by sendo             #+#    #+#             */
-/*   Updated: 2023/09/28 18:53:05 by shucream         ###   ########.fr       */
+/*   Updated: 2023/09/30 21:21:12 by shucream         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include "printf/ft_printf.h"
+#include "libft/libft.h"
 # include <math.h>
 # include "./minilibx_opengl_20191021/mlx.h"
 # include <stdio.h>
